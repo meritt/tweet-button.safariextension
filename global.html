@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>The Tweet Button</title>
+    <script>
+
+      function handleCommand(event) {
+        if (event.command === 'tweet') {
+          var popupUrl = 'http://twitter.com/share?count=vertical';
+          popupUrl += '&url=' + encodeURIComponent(safari.application.activeBrowserWindow.activeTab.url);
+          popupUrl += '&text=' + encodeURIComponent(safari.application.activeBrowserWindow.activeTab.title);
+
+          var newTab = safari.application.activeBrowserWindow.openTab();
+          newTab.url = popupUrl;
+        }
+      }
+
+      function handleValidate(event) {
+        if (event.command === 'tweet') {
+          event.target.disabled = !event.target.browserWindow.activeTab.url;
+        }
+      }
+
+      function handleMessage(event) {
+        if (event.name === 'get-badge') {
+          fetchTweetCount();
+        } else if (event.name === 'update-badge') {
+          updateBadge(event.message);
+        }
+      }
+
+      function fetchTweetCount() {
+        var url = 'http://urls.api.twitter.com/1/urls/count.json?url='
+                + encodeURIComponent(safari.application.activeBrowserWindow.activeTab.url);
+
+        var xhr = new XMLHttpRequest();
+
+        xhr.onreadystatechange = function() {
+          if (xhr.readyState === 4) {
+            var result = JSON.parse(xhr.responseText);
+            safari.application.activeBrowserWindow.activeTab.page.dispatchMessage('cache-count', result.count || 0);
+          }
+        };
+
+        xhr.open('GET', url, true);
+        xhr.send(null);
+      }
+
+      function updateBadge(count) {
+        safari.extension.toolbarItems.forEach(function(element) {
+          element.badge = count;
+        });
+      }
+
+      safari.application.addEventListener("command", handleCommand, false);
+      safari.application.addEventListener("validate", handleValidate, false);
+      safari.application.addEventListener("message", handleMessage, false);
+    </script>
+  </head>
+</html>
