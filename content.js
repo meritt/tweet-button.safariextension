@@ -2,7 +2,7 @@ var tweetCount = null;
 
 function initTweetButton() {
   if (location.href === top.location.href) {
-    safari.self.tab.dispatchMessage('get-badge', true);
+    getTweetBadge();
 
     safari.self.addEventListener('message', handleMessage, false);
 
@@ -17,8 +17,18 @@ function handleMessage(event) {
   }
 }
 
+function getTweetBadge() {
+  if (tweetCount === null) {
+    safari.self.tab.dispatchMessage('get-badge', true);
+  }
+}
+
 function updateTweetCount() {
-  safari.self.tab.dispatchMessage('update-badge', tweetCount);
+  getTweetBadge();
+
+  if (tweetCount !== null) {
+    safari.self.tab.dispatchMessage('update-badge', tweetCount);
+  }
 }
 
 initTweetButton();
