@@ -1,7 +1,7 @@
 The Tweet Button Safari Extension
 =======================
 
-*Tweet your link*
+[The announcement of this extension in my blog](http://bit.ly/aIHnrL).
 
 Download
 --------
