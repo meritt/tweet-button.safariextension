@@ -7,19 +7,27 @@
 
       function handleCommand(event) {
         if (event.command === 'tweet') {
-          var popupUrl = 'http://twitter.com/share?count=vertical';
-          popupUrl += '&url=' + encodeURIComponent(safari.application.activeBrowserWindow.activeTab.url);
-          popupUrl += '&text=' + encodeURIComponent(safari.application.activeBrowserWindow.activeTab.title);
+          var shareUrl = 'http://twitter.com/share?count=vertical'
+                       + '&url=' + encodeURIComponent(safari.application.activeBrowserWindow.activeTab.url)
+                       + '&text=' + encodeURIComponent(safari.application.activeBrowserWindow.activeTab.title);
 
-          var newTab = safari.application.activeBrowserWindow.openTab();
-          newTab.url = popupUrl;
+          safari.application.activeBrowserWindow.openTab().url = shareUrl;
+        } else if (event.command === 'showtweet') {
+          var searchUrl = 'http://twitter.com/#search?q='
+                        + encodeURIComponent(safari.application.activeBrowserWindow.activeTab.url);
+
+          safari.application.activeBrowserWindow.openTab().url = searchUrl;
         }
       }
 
       function handleValidate(event) {
-        if (event.command === 'tweet') {
+        if (event.command === 'tweet' || event.command === 'showtweet') {
           event.target.disabled = !event.target.browserWindow.activeTab.url;
         }
+      }
+
+      function handleContext(event) {
+        event.contextMenu.appendContextMenuItem('showtweet', 'Show tweet');
       }
 
       function handleMessage(event) {
@@ -59,6 +67,7 @@
 
       safari.application.addEventListener("command", handleCommand, false);
       safari.application.addEventListener("validate", handleValidate, false);
+      safari.application.addEventListener("contextmenu", handleContext, false);
       safari.application.addEventListener("message", handleMessage, false);
     </script>
   </head>
