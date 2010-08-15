@@ -38,7 +38,7 @@
 	<dict>
 		<key>Blacklist</key>
 		<array>
-			<string>http://twitter.com/*</string>
+			<string>http://twitter.com/share*</string>
 		</array>
 		<key>Scripts</key>
 		<dict>
