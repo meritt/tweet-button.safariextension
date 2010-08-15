@@ -38,8 +38,12 @@
 
         xhr.onreadystatechange = function() {
           if (xhr.readyState === 4) {
-            var result = JSON.parse(xhr.responseText);
-            safari.application.activeBrowserWindow.activeTab.page.dispatchMessage('cache-count', result.count || 0);
+            var result = JSON.parse(xhr.responseText),
+                tab    = safari.application.activeBrowserWindow.activeTab;
+
+            if (typeof tab != 'undefined' && typeof tab.page != 'undefined') {
+              tab.page.dispatchMessage('cache-count', result.count || 0);
+            }
           }
         };
 
