@@ -11,4 +11,5 @@ Grab the latest from the [Download](http://github.com/meritt/tweet-button.safari
 Screenshot
 ----------
 
-![Screenshot](http://meritt.github.com/tweet-button.safariextension/screenshot.png)
+![Screenshot 1](http://meritt.github.com/tweet-button.safariextension/screenshot.png)
+![Screenshot 2](http://meritt.github.com/tweet-button.safariextension/screenshot-tweet.png)
