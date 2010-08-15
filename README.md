@@ -8,6 +8,7 @@ Changelog
 
 ### 1.1
 
+* New toolbar icon? (TBD)
 * Context menu item to display a list of tweets
 * Improved stability
 
