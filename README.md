@@ -1,7 +1,7 @@
 The Tweet Button Safari Extension
 =======================
 
-[The announcement of this extension in my blog](http://bit.ly/aIHnrL).
+[The announcement in russian of this extension in my blog](http://bit.ly/aIHnrL).
 
 Changelog
 ---------
