@@ -13,8 +13,11 @@
 
           safari.application.activeBrowserWindow.openTab().url = shareUrl;
         } else if (event.command === 'showtweet') {
-          var searchUrl = 'http://twitter.com/#search?q='
-                        + encodeURIComponent(safari.application.activeBrowserWindow.activeTab.url);
+          var searchUrl = safari.application.activeBrowserWindow.activeTab.url;
+
+          searchUrl = searchUrl.split('?');
+          searchUrl = searchUrl[0].split('#');
+          searchUrl = 'http://twitter.com/#search?q=' + encodeURIComponent(searchUrl[0]);
 
           safari.application.activeBrowserWindow.openTab().url = searchUrl;
         }

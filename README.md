@@ -1,5 +1,5 @@
-The Tweet Button Safari Extension
-=======================
+The Tweet Button for Safari 5
+=============================
 
 [The announcement in russian of this extension in my blog](http://bit.ly/aIHnrL).
 
