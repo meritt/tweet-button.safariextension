@@ -10,11 +10,11 @@
 			<key>Team Identifier</key>
 			<string>L75MJ94K6P</string>
 			<key>CFBundleVersion</key>
-			<string>1.0</string>
+			<string>1.1.0</string>
 			<key>CFBundleShortVersionString</key>
-			<string>1.0</string>
+			<string>1.1</string>
 			<key>URL</key>
-			<string>http://meritt.github.com/tweet-button.safariextension/tweet-button-1.0.safariextz</string>
+			<string>http://meritt.github.com/tweet-button.safariextension/tweet-button-1.1.safariextz</string>
 		</dict>
 	</array>
 </dict>
