@@ -8,7 +8,7 @@ Changelog
 
 ### 1.1
 
-* New toolbar icon? (TBD)
+* New toolbar icon (Thank for Alexander Laguta, fuge.ru)
 * Context menu item to display a list of tweets
 * Improved stability
 
